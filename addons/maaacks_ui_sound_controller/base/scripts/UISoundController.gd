@@ -137,7 +137,7 @@ func _slider_drag_ended_play_stream(_value_changed : bool, stream_player : Audio
 func _line_event_play_stream(_new_text : String, stream_player : AudioStreamPlayer):
 	_play_stream(stream_player)
 
-func _item_list_play_stream(_index : int,stream_player : AudioStreamPlayer):
+func _item_list_play_stream(_index : int, stream_player : AudioStreamPlayer) -> void:
 	_play_stream(stream_player)
 
 func _connect_stream_player(node : Node, stream_player : AudioStreamPlayer, signal_name : StringName, callable : Callable) -> void:
