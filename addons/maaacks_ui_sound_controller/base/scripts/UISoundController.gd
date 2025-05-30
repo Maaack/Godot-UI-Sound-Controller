@@ -39,6 +39,10 @@ const MAX_DEPTH = 16
 @export var line_text_submitted : AudioStream
 @export var line_text_change_rejected : AudioStream
 
+@export_group("ItemList Sounds")
+@export var item_list_activated : AudioStream
+@export var item_list_selected : AudioStream
+
 @onready var root_node : Node = get_node(root_path)
 
 var button_hovered_player : AudioStreamPlayer
@@ -59,6 +63,10 @@ var line_focused_player : AudioStreamPlayer
 var line_text_changed_player : AudioStreamPlayer
 var line_text_submitted_player : AudioStreamPlayer
 var line_text_change_rejected_player : AudioStreamPlayer
+
+var item_list_activated_player : AudioStreamPlayer
+var item_list_selected_player : AudioStreamPlayer
+
 
 func _update_persistent_signals():
 	if not is_inside_tree():
@@ -104,11 +112,16 @@ func _build_line_stream_players():
 	line_text_submitted_player = _build_stream_player(line_text_submitted, "LineTextSubmitted")
 	line_text_change_rejected_player = _build_stream_player(line_text_change_rejected, "LineTextChangeRejected")
 
+func _build_item_stream_players():
+	item_list_activated_player = _build_stream_player(item_list_activated,"ItemActivated")
+	item_list_selected_player = _build_stream_player(item_list_selected,"ItemSelected")
+
 func _build_all_stream_players():
 	_build_button_stream_players()
 	_build_tab_stream_players()
 	_build_slider_stream_players()
 	_build_line_stream_players()
+	_build_item_stream_players()
 
 func _play_stream(stream_player : AudioStreamPlayer):
 	if not stream_player.is_inside_tree():
@@ -122,6 +135,9 @@ func _slider_drag_ended_play_stream(_value_changed : bool, stream_player : Audio
 	_play_stream(stream_player)
 
 func _line_event_play_stream(_new_text : String, stream_player : AudioStreamPlayer):
+	_play_stream(stream_player)
+
+func _item_list_play_stream(_index : int, stream_player : AudioStreamPlayer) -> void:
 	_play_stream(stream_player)
 
 func _connect_stream_player(node : Node, stream_player : AudioStreamPlayer, signal_name : StringName, callable : Callable) -> void:
@@ -148,6 +164,9 @@ func connect_ui_sounds(node: Node) -> void:
 		_connect_stream_player(node, line_text_changed_player, &"text_changed", _line_event_play_stream)
 		_connect_stream_player(node, line_text_submitted_player, &"text_submitted", _line_event_play_stream)
 		_connect_stream_player(node, line_text_change_rejected_player, &"text_change_rejected", _line_event_play_stream)
+	elif node is ItemList:
+		_connect_stream_player(node, item_list_activated_player, &"item_activated", _item_list_play_stream)
+		_connect_stream_player(node, item_list_selected_player, &"item_selected", _item_list_play_stream)
 
 func _recursive_connect_ui_sounds(current_node: Node, current_depth : int = 0) -> void:
 	if current_depth >= MAX_DEPTH:
