@@ -23,18 +23,16 @@ if [ -z "$source" ]; then
     source="$user_input"
 fi
 
-
 # Source and destination directors
 src_dir="$source/addons/maaacks_menus_template/"
 dest_dir="../addons/maaacks_ui_sound_controller/"
 
 echo $src_dir
-find $src_dir -type d -empty -o -type f -ctime -10 -printf '%P\0' | rsync -av --files-from=- --from0 "$src_dir" "$dest_dir"
-
+rsync -av --existing "$src_dir/" "$dest_dir"
 
 # Define strings to replace
-finds=("menus_template" "Menus Template" "Menus-Template" "menus-template")
-replaces=("ui_sound_controller" "UI Sound Controller" "UI-Sound-Controller" "ui-sound-controller")
+finds=("menus_template" "Menus Template" "MenusTemplate" "Menus-Template" "menus-template")
+replaces=("ui_sound_controller" "UI Sound Controller" "UISoundController" "UI-Sound-Controller" "ui-sound-controller")
 
 # Checks for strings and replaces them
 for ((i=0; i<${#finds[@]}; i++)); do
