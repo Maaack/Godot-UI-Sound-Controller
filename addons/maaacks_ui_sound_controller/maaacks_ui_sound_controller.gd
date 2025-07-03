@@ -1,5 +1,9 @@
 @tool
+class_name MaaacksUISoundControllerPlugin
 extends EditorPlugin
+
+const APIClient = preload("res://addons/maaacks_ui_sound_controller/utilities/api_client.gd")
+const DownloadAndExtract = preload("res://addons/maaacks_ui_sound_controller/utilities/download_and_extract.gd")
 
 const PLUGIN_NAME = "Maaack's UI Sound Controller"
 const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
