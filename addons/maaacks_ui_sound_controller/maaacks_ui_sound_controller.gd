@@ -7,6 +7,8 @@ const DownloadAndExtract = preload("res://addons/maaacks_ui_sound_controller/uti
 
 const PLUGIN_NAME = "Maaack's UI Sound Controller"
 const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
+const OPEN_EDITOR_DELAY : float = 0.1
+const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 
 var update_plugin_tool_string : String
 
@@ -45,9 +47,45 @@ func _remove_update_plugin_tool_option() -> void:
 	remove_tool_menu_item(update_plugin_tool_string)
 	update_plugin_tool_string = ""
 
+func _resave_if_recently_opened() -> void:
+	if Engine.get_physics_frames() < MAX_PHYSICS_FRAMES_FROM_START:
+		var timer: Timer = Timer.new()
+		var callable := func():
+			if Engine.get_frames_per_second() >= 10:
+				timer.stop()
+				EditorInterface.save_scene()
+				timer.queue_free()
+		timer.timeout.connect(callable)
+		add_child(timer)
+		timer.start(OPEN_EDITOR_DELAY)
+
+func _add_audio_bus(bus_name : String) -> void:
+	var has_bus_name := false
+	for bus_idx in range(AudioServer.bus_count):
+		var existing_bus_name := AudioServer.get_bus_name(bus_idx)
+		if existing_bus_name == bus_name:
+			has_bus_name = true
+			break
+	if not has_bus_name:
+		AudioServer.add_bus()
+		var new_bus_idx := AudioServer.bus_count - 1
+		AudioServer.set_bus_name(new_bus_idx, bus_name)
+		AudioServer.set_bus_send(new_bus_idx, &"Master")
+	ProjectSettings.save()
+
+func _install_audio_busses() -> void:
+	if ProjectSettings.has_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses"):
+		if ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses") :
+			return
+	_add_audio_bus("SFX")
+	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", true)
+	ProjectSettings.save()
+
 func _enter_tree() -> void:
-	add_autoload_singleton("ProjectUISoundController", "res://addons/maaacks_ui_sound_controller/base/scenes/autoloads/project_ui_sound_controller.tscn")
+	add_autoload_singleton("ProjectUISoundController", get_plugin_path() + "base/scenes/autoloads/project_ui_sound_controller.tscn")
+	_install_audio_busses()
 	_open_check_plugin_version()
+	_resave_if_recently_opened()
 
 func _exit_tree() -> void:
 	remove_autoload_singleton("ProjectUISoundController")
