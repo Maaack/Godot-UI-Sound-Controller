@@ -1,5 +1,5 @@
 # Godot UI Sound Controller
-For Godot 4.4 (4.3+ compatible)
+For Godot 4.7 (4.3+ compatible)
 
 This script and autoload automatically attaches sounds to buttons, tab bars, sliders, and line edits.
 
@@ -9,7 +9,7 @@ _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Tem
 ## Use Case
 For adding SFX to all your project's UI elements from one node.
 
-[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) is recommended for first time users, especially those new to Godot.  
+[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) is recommended for first time users.  
 
 ## Features
 
@@ -25,17 +25,17 @@ For adding SFX to all your project's UI elements from one node.
 
 Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_ui_sound_controller/docs/PluginSuite.md).  
 
-  
+
 ## Installation
 
-### Godot Asset Library
+### Godot Asset Store & Library
 This package is available as a plugin, meaning it can be added to an existing project. 
 
 ![Package Icon](/addons/maaacks_ui_sound_controller/media/ui_sound_controller-icon-black-transparent-256x256.png)  
 
 When editing an existing project:
 
-1.  Go to the `AssetLib` tab.
+1.  Go to the `Asset Store` tab.
 2.  Search for "Maaack's UI Sound Controller".
 3.  Click on the result to open the plugin details.
 4.  Click to Download.
@@ -69,10 +69,10 @@ Alternatively, open `ProjectUISoundController.tscn`, select the root node, and a
 
 ## Featured Games
 
-| Spud Customs | Rent Seek Kill  | A Darkness Like Gravity  |  
+| HeartFix Express | Baking Godium | Rent Seek Kill |  
 | :-------:| :-------: | :-------: |
-![Spud Customs](/addons/maaacks_ui_sound_controller/media/thumbnail-game-spud-customs.png)  |  ![Rent-Seek-Kill](/addons/maaacks_ui_sound_controller/media/thumbnail-game-rent-seek-kill.png)  |  ![A Darkness Like Gravity](/addons/maaacks_ui_sound_controller/media/thumbnail-game-a-darkness-like-gravity.png)  |
-[Find on Steam](https://store.steampowered.com/app/3291880/Spud_Customs/) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |  [Play on itch.io](https://maaack.itch.io/a-darkness-like-gravity)  |
+| ![HeartFix Express](/addons/maaacks_ui_sound_controller/media/thumbnail-game-heartfix-express.png) | ![Baking Godium](/addons/maaacks_ui_sound_controller/media/thumbnail-game-baking-godium.png) | ![Rent-Seek-Kill](/addons/maaacks_ui_sound_controller/media/thumbnail-game-rent-seek-kill.png) |
+|  [Find on Steam](https://store.steampowered.com/app/3983290/HeartFix_Express_Demo/)  | [Play on itch.io](https://maaack.itch.io/baking-godium) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
 
 
 [All Shared Games](/addons/maaacks_ui_sound_controller/docs/GamesMade.md)  

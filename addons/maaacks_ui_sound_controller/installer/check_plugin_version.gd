@@ -1,5 +1,6 @@
 @tool
 extends Node
+## Script for comparing the version of a plugin to the latest release on GitHub.
 
 signal new_version_detected(version: String)
 signal versions_matched
@@ -9,15 +10,22 @@ const APIClient = MaaacksUISoundControllerPlugin.APIClient
 
 const API_RELEASES_URL := "https://api.github.com/repos/%s/%s/releases"
 
+## The directory of the plugin to update. Typically in res://addons/.
 @export var plugin_directory : String
+## The URL of the GitHub repo to pull new releases.
 @export var plugin_github_url : String :
 	set(value):
 		plugin_github_url = value
 		_update_urls()
 @export_group("Advanced")
+## If true, automatically check for a new version when ready.
 @export var auto_start : bool = false
-@export var default_version : String = "0.0.0"
+## Text to remove from the tag before comparing versions.
 @export var replace_tag_name : String = "v"
+## The default lowest version to display.
+@export var default_version : String = "0.0.0"
+## If true, test comparing versions.
+## Replace with @export_tool_button for Godot 4.4+
 @export var _test_action : bool = false :
 	set(value):
 		if value and Engine.is_editor_hint():
@@ -53,7 +61,7 @@ func _on_api_client_request_failed(error) -> void:
 	queue_free()
 
 func _on_api_client_response_received(response_body) -> void:
-	if response_body is not Array:
+	if response_body is not Array or response_body.is_empty():
 		failed.emit()
 		queue_free()
 		return

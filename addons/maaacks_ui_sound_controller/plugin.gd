@@ -2,17 +2,17 @@
 class_name MaaacksUISoundControllerPlugin
 extends EditorPlugin
 
+const PLUGIN_NAME = "Maaack's UI Sound Controller"
+const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
 const APIClient = preload("res://addons/maaacks_ui_sound_controller/utilities/api_client.gd")
 const DownloadAndExtract = preload("res://addons/maaacks_ui_sound_controller/utilities/download_and_extract.gd")
 
-const PLUGIN_NAME = "Maaack's UI Sound Controller"
-const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 
 var update_plugin_tool_string : String
 
-func _get_plugin_name() -> String:
+static func get_plugin_name() -> String:
 	return PLUGIN_NAME
 
 func get_plugin_path() -> String:
@@ -31,7 +31,7 @@ func _open_check_plugin_version() -> void:
 	check_version_instance.new_version_detected.connect(_add_update_plugin_tool_option)
 	add_child(check_version_instance)
 
-func _open_update_plugin() -> void:
+func open_update_plugin() -> void:
 	var update_plugin_scene : PackedScene = load(get_plugin_path() + "installer/update_plugin.tscn")
 	var update_plugin_instance : Node = update_plugin_scene.instantiate()
 	update_plugin_instance.auto_start = true
@@ -39,8 +39,8 @@ func _open_update_plugin() -> void:
 	add_child(update_plugin_instance)
 
 func _add_update_plugin_tool_option(new_version : String) -> void:
-	update_plugin_tool_string = "Update %s to v%s..." % [_get_plugin_name(), new_version]
-	add_tool_menu_item(update_plugin_tool_string, _open_update_plugin)
+	update_plugin_tool_string = "Update %s to v%s..." % [get_plugin_name(), new_version]
+	add_tool_menu_item(update_plugin_tool_string, open_update_plugin)
 
 func _remove_update_plugin_tool_option() -> void:
 	if update_plugin_tool_string.is_empty(): return
@@ -74,12 +74,10 @@ func _add_audio_bus(bus_name : String) -> void:
 	ProjectSettings.save()
 
 func _install_audio_busses() -> void:
-	if ProjectSettings.has_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses"):
-		if ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses") :
-			return
-	_add_audio_bus("SFX")
-	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", true)
-	ProjectSettings.save()
+	if not ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", false):
+		_add_audio_bus("SFX")
+		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", true)
+		ProjectSettings.save()
 
 func _enter_tree() -> void:
 	add_autoload_singleton("ProjectUISoundController", get_plugin_path() + "base/scenes/autoloads/project_ui_sound_controller.tscn")
