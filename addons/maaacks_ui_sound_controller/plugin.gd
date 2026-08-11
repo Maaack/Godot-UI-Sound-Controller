@@ -6,9 +6,6 @@ const PLUGIN_NAME = "Maaack's UI Sound Controller"
 const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
 const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-UI-Sound-Controller"
 const UI_SOUND_CONTROLLER_RELATIVE_PATH = "base/scenes/autoloads/project_ui_sound_controller.tscn"
-const APIClient = preload("res://addons/maaacks_ui_sound_controller/utilities/api_client.gd")
-const DownloadAndExtract = preload("res://addons/maaacks_ui_sound_controller/utilities/download_and_extract.gd")
-
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 
