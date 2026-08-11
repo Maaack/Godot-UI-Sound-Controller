@@ -1,13 +1,20 @@
 # Godot UI Sound Controller
-For Godot 4.7 (4.3+ compatible)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-UI-Sound-Controller)
+![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-UI-Sound-Controller)
+[![Discord members](https://img.shields.io/discord/772191827570720798.svg?label=&logo=discord&logoColor=ffffff)](https://discord.gg/AyZrJh5AMp)  
 
 This script and autoload automatically attaches sounds to buttons, tab bars, sliders, and line edits.
+
+For Godot 4.7 (4.3+ compatible)
 
 [Example on itch.io](https://maaack.itch.io/godot-game-template)  
 _Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template), which includes additional features._
 
-## Use Case
-For adding SFX to all your project's UI elements from one node.
+[Featured Games](#featured-games)  
+
+
+## Objective
+Add SFX to all your project's UI elements from one node in 5 minutes.
 
 [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) is recommended for first time users.  
 
@@ -80,8 +87,8 @@ Alternatively, open `ProjectUISoundController.tscn`, select the root node, and a
 
 ## Community
 
-Join the [Discord server](https://discord.gg/AyZrJh5AMp ) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
- 
+Join the [Discord server](https://discord.gg/AyZrJh5AMp) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
+
 
 ## Links
 [Attribution](/addons/maaacks_ui_sound_controller/ATTRIBUTION.md)  
