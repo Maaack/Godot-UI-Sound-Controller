@@ -1,3 +1,5 @@
+![Package Icon](/addons/maaacks_ui_sound_controller/media/ui_sound_controller-icon-black-transparent-256x256.png)  
+
 # Godot UI Sound Controller
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-UI-Sound-Controller)
 ![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-UI-Sound-Controller)
@@ -5,62 +7,32 @@
 
 This script and autoload automatically attaches sounds to buttons, tab bars, sliders, and line edits.
 
-For Godot 4.7 (4.3+ compatible)
+For *Godot 4.7* (4.3+ compatible)
 
-[Example on itch.io](https://maaack.itch.io/godot-game-template)  
-_Example is of [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template), which includes additional features._
-
-[Featured Games](#featured-games)  
-
+[Example on itch.io](https://maaack.itch.io/godot-game-template) of *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)*, which includes additional features.
 
 ## Objective
 Add SFX to all your project's UI elements from one node in 5 minutes.
 
-[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) is recommended for first time users.  
-
-## Features
-
-* Centralizes control of SFX for buttons, tab bars, sliders, and line edits.
-* Automatically detects supported UI nodes added to scenes, and attaches sounds.
-* Works as a script attached to a node in a scene, or as the project's autoload.
-
-
-### How it Works
-- The `UISoundController` node automatically attaches sounds to buttons, tab bars, sliders, and line edits in the scene. `ProjectUISoundController.tscn` is an autload used to apply UI sounds project-wide.
-
 ### Extras or Components
 
-Users that want additional features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_ui_sound_controller/docs/PluginSuite.md).  
-
+Users that want additional features can try *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)* or other options from the [plugin suite](/addons/maaacks_ui_sound_controller/docs/PluginSuite.md).  
 
 ## Installation
 
-### Godot Asset Store & Library
-This package is available as a plugin, meaning it can be added to an existing project. 
+*Maaack's UI Sound Controller* is available in both the *Godot Asset Library* and the *Godot Asset Store*. It is available as a plugin, meaning it can be added to an existing project.
 
-![Package Icon](/addons/maaacks_ui_sound_controller/media/ui_sound_controller-icon-black-transparent-256x256.png)  
+### Existing Project
+While editing a project in *Godot*:
 
-When editing an existing project:
-
-1.  Go to the `Asset Store` tab.
+1.  Go to the **Asset Store** tab.
 2.  Search for "Maaack's UI Sound Controller".
 3.  Click on the result to open the plugin details.
-4.  Click to Download.
+4.  Click to **Download**.
 5.  Check that contents are getting installed to `addons/` and there are no conflicts.
-6.  Click to Install.
+6.  Click to **Install**.
 7.  Reload the project (you may see errors before you do this).
-8.  Enable the plugin from the Project Settings > Plugins tab.
-
-
-### GitHub
-
-
-1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-UI-Sound-Controller/releases/latest).  
-2.  Extract the contents of the archive.
-3.  Move the `addons/maaacks_ui_sound_controller` folder into your project's `addons/` folder.  
-4.  Open/Reload the project.  
-5.  Enable the plugin from the Project Settings > Plugins tab.  
-
+8.  Enable the plugin from the **Project > Project Settings > Plugins** tab.
 
 ## Usage
 
@@ -72,8 +44,6 @@ Alternatively, open `ProjectUISoundController.tscn`, select the root node, and a
 
 [Automatic Updating](/addons/maaacks_ui_sound_controller/docs/AutomaticUpdating.md)  
 
----
-
 ## Featured Games
 
 | HeartFix Express | Baking Godium | Rent Seek Kill |  
@@ -84,11 +54,9 @@ Alternatively, open `ProjectUISoundController.tscn`, select the root node, and a
 
 [All Shared Games](/addons/maaacks_ui_sound_controller/docs/GamesMade.md)  
 
-
 ## Community
 
 Join the [Discord server](https://discord.gg/AyZrJh5AMp) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
-
 
 ## Links
 [Attribution](/addons/maaacks_ui_sound_controller/ATTRIBUTION.md)  
