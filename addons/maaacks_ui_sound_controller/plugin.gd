@@ -4,48 +4,16 @@ extends EditorPlugin
 
 const PLUGIN_NAME = "Maaack's UI Sound Controller"
 const PROJECT_SETTINGS_PATH = "maaacks_ui_sound_controller/"
-const APIClient = preload("res://addons/maaacks_ui_sound_controller/utilities/api_client.gd")
-const DownloadAndExtract = preload("res://addons/maaacks_ui_sound_controller/utilities/download_and_extract.gd")
-
+const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-UI-Sound-Controller"
+const UI_SOUND_CONTROLLER_RELATIVE_PATH = "base/scenes/autoloads/project_ui_sound_controller.tscn"
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
-
-var update_plugin_tool_string : String
 
 static func get_plugin_name() -> String:
 	return PLUGIN_NAME
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir() + "/"
-
-func _open_check_plugin_version() -> void:
-	if ProjectSettings.has_setting(PROJECT_SETTINGS_PATH + "disable_update_check"):
-		if ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_update_check"):
-			return
-	else:
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_update_check", false)
-		ProjectSettings.save()
-	var check_version_scene : PackedScene = load(get_plugin_path() + "installer/check_plugin_version.tscn")
-	var check_version_instance : Node = check_version_scene.instantiate()
-	check_version_instance.auto_start = true
-	check_version_instance.new_version_detected.connect(_add_update_plugin_tool_option)
-	add_child(check_version_instance)
-
-func open_update_plugin() -> void:
-	var update_plugin_scene : PackedScene = load(get_plugin_path() + "installer/update_plugin.tscn")
-	var update_plugin_instance : Node = update_plugin_scene.instantiate()
-	update_plugin_instance.auto_start = true
-	update_plugin_instance.update_completed.connect(_remove_update_plugin_tool_option)
-	add_child(update_plugin_instance)
-
-func _add_update_plugin_tool_option(new_version : String) -> void:
-	update_plugin_tool_string = "Update %s to v%s..." % [get_plugin_name(), new_version]
-	add_tool_menu_item(update_plugin_tool_string, open_update_plugin)
-
-func _remove_update_plugin_tool_option() -> void:
-	if update_plugin_tool_string.is_empty(): return
-	remove_tool_menu_item(update_plugin_tool_string)
-	update_plugin_tool_string = ""
 
 func _resave_if_recently_opened() -> void:
 	if Engine.get_physics_frames() < MAX_PHYSICS_FRAMES_FROM_START:
@@ -79,12 +47,26 @@ func _install_audio_busses() -> void:
 		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", true)
 		ProjectSettings.save()
 
+func _enable_plugin():
+	add_autoload_singleton("ProjectUISoundController", get_plugin_path() + UI_SOUND_CONTROLLER_RELATIVE_PATH)
+
+func _disable_plugin():
+	remove_autoload_singleton("ProjectUISoundController")
+
+func _add_to_auto_update_list() -> void:
+	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
+	plugin_repos[get_plugin_path()] = PLUGIN_REPO_URL
+	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
+
+func _remove_from_auto_update_list() -> void:
+	var plugin_repos:Dictionary = ProjectSettings.get_setting("plugin_updater/plugins", {})
+	plugin_repos.erase(get_plugin_path())
+	ProjectSettings.set_setting("plugin_updater/plugins", plugin_repos)
+
 func _enter_tree() -> void:
-	add_autoload_singleton("ProjectUISoundController", get_plugin_path() + "base/scenes/autoloads/project_ui_sound_controller.tscn")
 	_install_audio_busses()
-	_open_check_plugin_version()
+	_add_to_auto_update_list()
 	_resave_if_recently_opened()
 
 func _exit_tree() -> void:
-	remove_autoload_singleton("ProjectUISoundController")
-	_remove_update_plugin_tool_option()
+	_remove_from_auto_update_list()
