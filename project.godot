@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ProjectUISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/autoloads/project_ui_sound_controller.tscn"
+UISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/autoloads/ui_sound_controller.tscn"
 
 [display]
 
