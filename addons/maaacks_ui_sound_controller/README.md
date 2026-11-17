@@ -1,4 +1,4 @@
-![Package Icon](/addons/maaacks_ui_sound_controller/media/ui_sound_controller-icon-black-transparent-256x256.png)  
+![Package Icon](/media/ui_sound_controller-icon-black-transparent-256x256.png)  
 
 # Godot UI Sound Controller
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-UI-Sound-Controller)
@@ -19,7 +19,7 @@ This template was originally made for Godot Wild Jam, and shares a no AI/LLM-gen
 
 ### Extras or Components
 
-Users that want additional features can try *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)* or other options from the [plugin suite](/addons/maaacks_ui_sound_controller/docs/PluginSuite.md).  
+Users that want additional features can try *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)* or other options from the [plugin suite](/docs/PluginSuite.md).  
 
 ## Installation
 
@@ -43,21 +43,21 @@ Attach the `ui_sound_controller.gd` script to a node that is in a UI scene. Sele
 
 Alternatively, if using the autoload, open `ui_sound_controller.tscn`, select the root node, and assign audio streams to the supported UI events project-wide.
 
-Refer to [Adding UI SFX](/addons/maaacks_ui_sound_controller/docs/AddingUISFX.md) for more details.
+Refer to [Adding UI SFX](/docs/AddingUISFX.md) for more details.
 
 ### More Documentation
 
-[Automatic Updating](/addons/maaacks_ui_sound_controller/docs/AutomaticUpdating.md)  
+[Automatic Updating](/docs/AutomaticUpdating.md)  
 
 ## Featured Games
 
 | HeartFix Express | Baking Godium | Rent Seek Kill |  
 | :-------:| :-------: | :-------: |
-| ![HeartFix Express](/addons/maaacks_ui_sound_controller/media/thumbnail-game-heartfix-express.png) | ![Baking Godium](/addons/maaacks_ui_sound_controller/media/thumbnail-game-baking-godium.png) | ![Rent-Seek-Kill](/addons/maaacks_ui_sound_controller/media/thumbnail-game-rent-seek-kill.png) |
+| ![HeartFix Express](/media/thumbnail-game-heartfix-express.png) | ![Baking Godium](/media/thumbnail-game-baking-godium.png) | ![Rent-Seek-Kill](/media/thumbnail-game-rent-seek-kill.png) |
 |  [Find on Steam](https://store.steampowered.com/app/3983290/HeartFix_Express_Demo/)  | [Play on itch.io](https://maaack.itch.io/baking-godium) | [Play on itch.io](https://xandruher.itch.io/rent-seek-kill)  |
 
 
-[All Shared Games](/addons/maaacks_ui_sound_controller/docs/GamesMade.md)  
+[All Shared Games](/docs/GamesMade.md)  
 
 ## Community
 
