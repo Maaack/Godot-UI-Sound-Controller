@@ -15,7 +15,7 @@ For *Godot 4.7* (4.3+ compatible)
 
 Add SFX to all your project's UI elements from one node in 5 minutes.
 
-This template was originally made for Godot Wild Jam, and shares a no AI/LLM-gen policy. Please open an [issue](https://github.com/Maaack/Godot-UI-Sound-Controller/issues) if there is a violation.  
+This plugin was originally made for Godot Wild Jam, and shares a no AI/LLM-gen policy. Please open an [issue](https://github.com/Maaack/Godot-UI-Sound-Controller/issues) if there is a violation.  
 
 ### Extras or Components
 
